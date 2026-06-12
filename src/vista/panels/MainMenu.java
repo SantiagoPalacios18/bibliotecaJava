@@ -15,7 +15,7 @@ public class MainMenu {
 
 
 
-        // Escape
+//      ---Estructura
         btnEscape = new JButton("Escape");
         c.weightx = .5;
         c.ipady = 20;
@@ -55,6 +55,18 @@ public class MainMenu {
         c.gridy = 2; c.gridx = 0; c.gridwidth = 3;
         ImageIcon imagen = new ImageIcon("./assets/test.png");
         menu.add(lblTitulo, c);
+
+//      ---Design
+
+        btnEscape.setBackground(Color.RED);
+
+        btnLibro.setBackground(Color.BLUE);
+
+        btnRevista.setBackground(Color.GREEN);
+
+        btnDVD.setBackground(Color.YELLOW);
+
+        lblTitulo.setIcon(imagen);
 
     }
 

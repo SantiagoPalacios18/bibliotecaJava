@@ -23,6 +23,5 @@ public abstract class MaterialBiblioteca {
     public void setGenero(String genero) {
         this.genero = genero;
     }
-
-
+    private boolean disponibilidad;
 }
