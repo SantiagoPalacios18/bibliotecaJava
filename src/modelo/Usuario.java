@@ -6,13 +6,16 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String mail;
-    private int edad;
     private ArrayList<Prestamo> prestamos;
 
-    public Usuario(String nombre, String apellido, String mail, int edad) {
+    public Usuario(String nombre, String apellido, String mail) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
-        this.edad = edad;
+        prestamos = new ArrayList<Prestamo>();
+    }
+
+    public void agregarPrestamo(Prestamo prestamo){
+        prestamos.add(prestamo);
     }
 }
