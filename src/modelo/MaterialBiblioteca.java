@@ -6,11 +6,11 @@ public abstract class MaterialBiblioteca {
     private String genero;
     private boolean disponibilidad;
 
-    public MaterialBiblioteca(String titulo, String autor, String genero, boolean disponibilidad) {
+    public MaterialBiblioteca(String titulo, String autor, String genero) {
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
-        this.disponibilidad = disponibilidad;
+        disponibilidad = true;
     }
 
     public String getTitulo() {
