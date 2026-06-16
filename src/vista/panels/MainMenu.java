@@ -1,5 +1,6 @@
 package vista.panels;
 
+import vista.Vista;
 import javax.swing.*;
 import java.awt.*;
 
@@ -67,6 +68,8 @@ public class MainMenu {
         btnDVD.setBackground(Color.YELLOW);
 
         lblTitulo.setIcon(imagen);
+
+//      ---Listeners
 
     }
 

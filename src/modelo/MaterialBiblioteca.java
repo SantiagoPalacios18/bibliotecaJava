@@ -19,16 +19,29 @@ public abstract class MaterialBiblioteca {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
     public String getAutor() {
         return autor;
     }
     public void setAutor(String autor) {
         this.autor = autor;
     }
+
     public String getGenero() {
         return genero;
     }
     public void setGenero(String genero) {
         this.genero = genero;
     }
+
+    public boolean getDisponibilidad () { return disponibilidad; }
+    public String showDisponibilidad() {
+        if (getDisponibilidad() == true) {
+            return "Disponible";
+        }else  {
+            return "No Disponible";
+        }
+    }
+    public void setDisponibilidad (boolean disponibilidad) { this.disponibilidad = disponibilidad; }
+
 }
