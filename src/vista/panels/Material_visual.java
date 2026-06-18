@@ -4,6 +4,8 @@ import modelo.MaterialBiblioteca;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Material_visual extends JPanel {
     private MaterialBiblioteca m;
@@ -30,5 +32,36 @@ public class Material_visual extends JPanel {
             genero.setForeground(Color.white);
             disponibilidad.setForeground(Color.white);
         }
+
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(e.getClickCount() == 2) {
+                    JFrame matExp = new JFrame();
+                    matExp.setSize(300, 600);
+                    matExp.setLocationRelativeTo(null);
+                    matExp.setResizable(false);
+                    matExp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+ 
+                    matExp.setContentPane(new JPanel(new GridBagLayout()));
+                    GridBagConstraints c = new GridBagConstraints();
+                    c.insets = new Insets(5, 5, 5, 5);
+
+                    c.gridx = 0; c.gridy = 0;
+                    matExp.add(new JLabel(m.getTitulo()), c);
+
+                    c.gridx = 0; c.gridy = 1;
+                    matExp.add(new JLabel(m.getAutor()), c);
+
+                    c.gridx = 0; c.gridy = 2;
+                    matExp.add(new JLabel(m.getGenero()), c);
+
+                    c.gridx = 0; c.gridy = 3;
+                    matExp.add(new JLabel(m.showDisponibilidad()), c);
+
+                    matExp.setVisible(true);
+                }
+            }
+        });
     }
 }

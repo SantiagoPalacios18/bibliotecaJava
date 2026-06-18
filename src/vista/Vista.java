@@ -6,16 +6,24 @@ import modelo.materiales.Libro;
 import vista.panels.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 
 public class Vista extends JFrame {
     private Controlador constrolador;
 
     public Vista(int x, int y) {
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension scn = tk.getScreenSize();
+
         setTitle("Sistema Biblioteca");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(x, y);
+        setLocationRelativeTo(null);
+        setPreferredSize(new Dimension(x, y));
         MainMenu menu = new MainMenu();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         ArrayList<MaterialBiblioteca> lista = new ArrayList<MaterialBiblioteca>();
 
@@ -32,9 +40,31 @@ public class Vista extends JFrame {
         Libro libro4 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
         lista.add(libro4);
 
+        Libro libro5 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        lista.add(libro5);
+
+        Libro libro6 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        lista.add(libro6);
+
         RegistroMaterial test = new RegistroMaterial(lista);
 
         setContentPane(test);
+
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                JPanel actPanel = (JPanel) getContentPane();
+                int w = actPanel.getWidth();
+                if(actPanel instanceof RegistroMaterial){
+                   if (w >= (int) (scn.getWidth() * .5)) {
+                       ((RegistroMaterial) actPanel).agregarMaterial(6);
+                   }else{
+                       ((RegistroMaterial) actPanel).agregarMaterial(3);
+                   }
+
+                }
+            }
+        });
     }
 
     public void setConstrolador(Controlador constrolador) {
