@@ -6,12 +6,11 @@ import modelo.materiales.Libro;
 import vista.panels.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 
-public class Vista extends JFrame {
-    private Controlador constrolador;
+public class Vista extends JFrame { //Extiende de JFrame porque es la ventana principal
+    private Controlador controlador;
 
     public Vista(int x, int y) {
         Toolkit tk = Toolkit.getDefaultToolkit();
@@ -20,8 +19,8 @@ public class Vista extends JFrame {
         setTitle("Sistema Biblioteca");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(x, y);
-        setLocationRelativeTo(null);
-        setPreferredSize(new Dimension(x, y));
+        setLocationRelativeTo(null); //Centra en la pantalla
+        setPreferredSize(new Dimension(x, y)); //
         MainMenu menu = new MainMenu();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
@@ -67,7 +66,7 @@ public class Vista extends JFrame {
         });
     }
 
-    public void setConstrolador(Controlador constrolador) {
-        this.constrolador = constrolador;
+    public void setControlador(Controlador controlador) {
+        this.controlador = controlador;
     }
 }

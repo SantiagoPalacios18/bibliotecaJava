@@ -3,12 +3,12 @@ package modelo;
 import controlador.Controlador;
 
 public class Modelo {
-    private Controlador constrolador;
+    private Controlador controlador;
 
     public Modelo() {
     }
 
-    public void setConstrolador(Controlador constrolador) {
-        this.constrolador = constrolador;
+    public void setControlador(Controlador controlador) {
+        this.controlador = controlador;
     }
 }

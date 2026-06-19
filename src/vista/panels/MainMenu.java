@@ -4,7 +4,7 @@ import vista.Vista;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainMenu {
+public class MainMenu { //
     private JPanel menu;
 
     private JButton btnLibro, btnRevista, btnDVD, btnEscape;
