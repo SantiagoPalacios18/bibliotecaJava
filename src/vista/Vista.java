@@ -1,13 +1,13 @@
 package vista;
 
 import controlador.Controlador;
-import modelo.MaterialBiblioteca;
-import modelo.materiales.Libro;
-import vista.panels.*;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import javax.swing.*;
+import modelo.MaterialBiblioteca;
+import modelo.materiales.Libro;
+import vista.panels.*;
 
 public class Vista extends JFrame { //Extiende de JFrame porque es la ventana principal
     private Controlador controlador;
@@ -46,8 +46,8 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         lista.add(libro6);
 
         RegistroMaterial test = new RegistroMaterial(lista);
-
-        setContentPane(test);
+        RegistroInicioSesion rls = new RegistroInicioSesion();
+        setContentPane(rls);
 
         addComponentListener(new ComponentAdapter() {
             @Override
