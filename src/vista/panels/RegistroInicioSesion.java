@@ -37,13 +37,13 @@ public class RegistroInicioSesion extends JPanel{
         c.insets = new Insets(50, 5, 50, 5);
         c.anchor = GridBagConstraints.CENTER;
         c.gridx = 0; c.gridy = 0;
-        add(btnRegistrarse, c);
+        menu.add(btnRegistrarse, c);
         JButton btnIniciarSesion = crearBotonRedondeado("Iniciar Sesion", 15);
         c.ipadx = 520;
         c.ipady = 60;
         c.anchor = GridBagConstraints.CENTER;
         c.gridx = 0; c.gridy = 1;
-        add(btnIniciarSesion, c);
+        menu.add(btnIniciarSesion, c);
 
         // Acción para cambiar de panel
         btnRegistrarse.addActionListener(e -> cardLayout.show(contenedorCentral, "REGISTRO"));
@@ -64,7 +64,7 @@ public class RegistroInicioSesion extends JPanel{
     // --- PANEL 2: EL REGISTRO ---
     private JPanel crearPanelRegistro() {
         JPanel registro = new JPanel();
-        registro.add(new JLabel("Aquí irán tus campos de texto de registro"));
+        registro.add(new JLabel("Aquí 💥 tus campos de texto de registro"));
         
         JButton btnVolver = new JButton("Volver al Menú");
         btnVolver.addActionListener(e -> cardLayout.show(contenedorCentral, "MENU"));

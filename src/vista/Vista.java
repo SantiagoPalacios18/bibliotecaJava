@@ -45,7 +45,7 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         Libro libro6 = new Libro("Vivaldi", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
         listaLibros.add(libro6);
 
-        RegistroMaterial test = new RegistroMaterial(lista);
+        RegistroMaterial test = new RegistroMaterial(listaLibros);
         RegistroInicioSesion rls = new RegistroInicioSesion();
         setContentPane(rls);
 
