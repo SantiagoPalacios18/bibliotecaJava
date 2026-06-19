@@ -1,16 +1,21 @@
 package modelo;
 
+import javax.swing.*;
+import java.awt.*;
+
 public abstract class MaterialBiblioteca {
     private String titulo;
+    private Image img;
     private String autor;
     private String genero;
     private boolean disponibilidad;
 
-    public MaterialBiblioteca(String titulo, String autor, String genero) {
+    public MaterialBiblioteca(String titulo, String img, String autor, String genero) {
         this.titulo = titulo;
+        this.img = new ImageIcon(img).getImage();
         this.autor = autor;
         this.genero = genero;
-        disponibilidad = true; //Se pone acá y no como static porque con  static si cambia uno cambian todos
+        disponibilidad = true;
     }
 
     public String getTitulo() {
@@ -19,6 +24,9 @@ public abstract class MaterialBiblioteca {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
+    public Image getImg() { return img; }
+    public void setImg(Image img) { this.img = img; }
 
     public String getAutor() {
         return autor;
@@ -35,13 +43,13 @@ public abstract class MaterialBiblioteca {
     }
 
     public boolean getDisponibilidad () { return disponibilidad; }
-    public void setDisponibilidad (boolean disponibilidad) { this.disponibilidad = disponibilidad; }
-
     public String showDisponibilidad() {
-        if (getDisponibilidad()) { //Sabe que es el getDisponibilidad de acá y no de otro lado porque siempre busc ametodos locales
+        if (getDisponibilidad() == true) {
             return "Disponible";
         }else  {
             return "No Disponible";
         }
     }
+    public void setDisponibilidad (boolean disponibilidad) { this.disponibilidad = disponibilidad; }
+
 }

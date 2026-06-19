@@ -6,6 +6,8 @@ import vista.Vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class RegistroMaterial extends JPanel {
@@ -13,7 +15,6 @@ public class RegistroMaterial extends JPanel {
     private JButton btnEscape;
     private JPanel opt;
     private JButton btnConfirmar;
-    private int fila = 3;
 
     public RegistroMaterial(ArrayList<MaterialBiblioteca> materiales) {
         this.materiales = materiales;
@@ -41,8 +42,6 @@ public class RegistroMaterial extends JPanel {
         add(opt, c);
         opt.setBackground(Color.black);
 
-        agregarMaterial(fila);
-
         btnConfirmar = new JButton("Confirmar");
         c.weightx = .5;
         c.weighty = 0;
@@ -52,6 +51,13 @@ public class RegistroMaterial extends JPanel {
         c.ipady = 50;
         c.gridx = 0; c.gridy = 2;
         add(btnConfirmar, c);
+
+        btnConfirmar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     public void agregarMaterial(int fila) {
