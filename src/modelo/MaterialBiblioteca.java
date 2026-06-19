@@ -1,13 +1,18 @@
 package modelo;
 
+import javax.swing.*;
+import java.awt.*;
+
 public abstract class MaterialBiblioteca {
     private String titulo;
+    private Image img;
     private String autor;
     private String genero;
     private boolean disponibilidad;
 
-    public MaterialBiblioteca(String titulo, String autor, String genero) {
+    public MaterialBiblioteca(String titulo, String img, String autor, String genero) {
         this.titulo = titulo;
+        this.img = new ImageIcon(img).getImage();
         this.autor = autor;
         this.genero = genero;
         disponibilidad = true;
@@ -19,6 +24,9 @@ public abstract class MaterialBiblioteca {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
+    public Image getImg() { return img; }
+    public void setImg(Image img) { this.img = img; }
 
     public String getAutor() {
         return autor;

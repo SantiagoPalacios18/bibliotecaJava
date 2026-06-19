@@ -26,26 +26,26 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
 
         ArrayList<MaterialBiblioteca> listaLibros = new ArrayList<MaterialBiblioteca>();
 
-        Libro libro1 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        Libro libro1 = new Libro("Vivaldi", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
         libro1.setDisponibilidad(false);
         listaLibros.add(libro1);
 
-        Libro libro2 = new Libro("Recetas con pan", "h4terCel1ac0s1221", "Cocina");
+        Libro libro2 = new Libro("Recetas con pan", "./assets/eadlt-vol1.jpg", "h4terCel1ac0s1221", "Cocina");
         listaLibros.add(libro2);
 
-        Libro libro3 = new Libro("ComoCocinarCentollas", "ha73rS4p4110s", "Navegadores");
+        Libro libro3 = new Libro("ComoCocinarCentollas", "./assets/eadlt-vol1.jpg", "ha73rS4p4110s", "Navegadores");
         listaLibros.add(libro3);
 
-        Libro libro4 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        Libro libro4 = new Libro("Vivaldi", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
         listaLibros.add(libro4);
 
-        Libro libro5 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        Libro libro5 = new Libro("Vivaldi", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
         listaLibros.add(libro5);
 
-        Libro libro6 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        Libro libro6 = new Libro("Vivaldi", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
         listaLibros.add(libro6);
 
-        RegistroMaterial test = new RegistroMaterial(lista);
+        RegistroMaterial test = new RegistroMaterial(listaLibros);
 
         setContentPane(test);
 
@@ -54,13 +54,14 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
             public void componentResized(ComponentEvent e) {
                 JPanel actPanel = (JPanel) getContentPane();
                 int w = actPanel.getWidth();
-                if(actPanel instanceof RegistroMaterial){
-                   if (w >= (int) (scn.getWidth() * .5)) {
-                       ((RegistroMaterial) actPanel).agregarMaterial(6);
-                   }else{
-                       ((RegistroMaterial) actPanel).agregarMaterial(3);
-                   }
-
+                if(actPanel instanceof RegistroMaterial) {
+                    if (w >= (int) (scn.getWidth() * .65)) {
+                        ((RegistroMaterial) actPanel).agregarMaterial(6);
+                    } else if (w <= (int) (scn.getWidth() * .65) && w >= (int) (scn.getWidth() * .25)) {
+                        ((RegistroMaterial) actPanel).agregarMaterial(3);
+                    } else {
+                        ((RegistroMaterial) actPanel).agregarMaterial(1);
+                    }
                 }
             }
         });
