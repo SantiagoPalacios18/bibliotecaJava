@@ -19,7 +19,7 @@ public class Material_visual extends JPanel {
 
         add(titulo); add(autor); add(genero); add(disponibilidad);
 
-//        -- Diseno
+//        -- Diseño
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
         autor.setFont(new Font("Arial", Font.BOLD, 20));
         genero.setFont(new Font("Arial", Font.BOLD, 20));
@@ -33,7 +33,7 @@ public class Material_visual extends JPanel {
             disponibilidad.setForeground(Color.white);
         }
 
-        addMouseListener(new MouseAdapter() {
+        addMouseListener(new MouseAdapter() { //No es Mouselistener porque el adapter me permite no overaidear todos sus metodos abstractos
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(e.getClickCount() == 2) {

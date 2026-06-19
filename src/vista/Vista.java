@@ -24,30 +24,51 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         MainMenu menu = new MainMenu();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        ArrayList<MaterialBiblioteca> lista = new ArrayList<MaterialBiblioteca>();
+        ArrayList<MaterialBiblioteca> listaLibros = new ArrayList<MaterialBiblioteca>();
 
         Libro libro1 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
         libro1.setDisponibilidad(false);
-        lista.add(libro1);
+        listaLibros.add(libro1);
 
         Libro libro2 = new Libro("Recetas con pan", "h4terCel1ac0s1221", "Cocina");
-        lista.add(libro2);
+        listaLibros.add(libro2);
 
         Libro libro3 = new Libro("ComoCocinarCentollas", "ha73rS4p4110s", "Navegadores");
-        lista.add(libro3);
+        listaLibros.add(libro3);
 
         Libro libro4 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
-        lista.add(libro4);
+        listaLibros.add(libro4);
 
         Libro libro5 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
-        lista.add(libro5);
+        listaLibros.add(libro5);
 
         Libro libro6 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
-        lista.add(libro6);
+        listaLibros.add(libro6);
 
-        RegistroMaterial test = new RegistroMaterial(lista);
+        Libro libro7 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        listaLibros.add(libro7);
+        Libro libro8 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        listaLibros.add(libro8);
+        Libro libro9 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        listaLibros.add(libro9);
+        Libro libro10 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        listaLibros.add(libro10);
+        Libro libro11 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        listaLibros.add(libro11);
+        Libro libro12 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        listaLibros.add(libro12);
+        Libro libro136 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        listaLibros.add(libro136);
+        Libro libro146 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        listaLibros.add(libro146);
+        Libro libro156 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        listaLibros.add(libro156);
+        Libro libro16 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        listaLibros.add(libro16);
 
-        setContentPane(menu);
+        RegistroMaterial test = new RegistroMaterial(listaLibros);
+
+        setContentPane(test);
 
         addComponentListener(new ComponentAdapter() {
             @Override
