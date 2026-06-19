@@ -24,26 +24,26 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         MainMenu menu = new MainMenu();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        ArrayList<MaterialBiblioteca> lista = new ArrayList<MaterialBiblioteca>();
+        ArrayList<MaterialBiblioteca> listaLibros = new ArrayList<MaterialBiblioteca>();
 
         Libro libro1 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
         libro1.setDisponibilidad(false);
-        lista.add(libro1);
+        listaLibros.add(libro1);
 
         Libro libro2 = new Libro("Recetas con pan", "h4terCel1ac0s1221", "Cocina");
-        lista.add(libro2);
+        listaLibros.add(libro2);
 
-        Libro libro3 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
-        lista.add(libro3);
+        Libro libro3 = new Libro("ComoCocinarCentollas", "ha73rS4p4110s", "Navegadores");
+        listaLibros.add(libro3);
 
         Libro libro4 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
-        lista.add(libro4);
+        listaLibros.add(libro4);
 
         Libro libro5 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
-        lista.add(libro5);
+        listaLibros.add(libro5);
 
         Libro libro6 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
-        lista.add(libro6);
+        listaLibros.add(libro6);
 
         RegistroMaterial test = new RegistroMaterial(lista);
 
