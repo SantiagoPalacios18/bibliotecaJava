@@ -10,7 +10,7 @@ public abstract class MaterialBiblioteca {
         this.titulo = titulo;
         this.autor = autor;
         this.genero = genero;
-        disponibilidad = true;
+        disponibilidad = true; //Se pone acá y no como static porque con  static si cambia uno cambian todos
     }
 
     public String getTitulo() {
@@ -35,13 +35,13 @@ public abstract class MaterialBiblioteca {
     }
 
     public boolean getDisponibilidad () { return disponibilidad; }
+    public void setDisponibilidad (boolean disponibilidad) { this.disponibilidad = disponibilidad; }
+
     public String showDisponibilidad() {
-        if (getDisponibilidad() == true) {
+        if (getDisponibilidad()) { //Sabe que es el getDisponibilidad de acá y no de otro lado porque siempre busc ametodos locales
             return "Disponible";
         }else  {
             return "No Disponible";
         }
     }
-    public void setDisponibilidad (boolean disponibilidad) { this.disponibilidad = disponibilidad; }
-
 }

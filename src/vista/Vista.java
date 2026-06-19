@@ -33,7 +33,7 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         Libro libro2 = new Libro("Recetas con pan", "h4terCel1ac0s1221", "Cocina");
         lista.add(libro2);
 
-        Libro libro3 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
+        Libro libro3 = new Libro("ComoCocinarCentollas", "ha73rS4p4110s", "Navegadores");
         lista.add(libro3);
 
         Libro libro4 = new Libro("Vivaldi", "Antonio Vivaldi", "Navegadores");
