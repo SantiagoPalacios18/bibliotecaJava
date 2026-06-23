@@ -23,13 +23,13 @@ public class RegistroMaterial extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(5, 5, 5, 5);
 
-
-//      --- Estructura
+        // --- Estructura
         btnEscape = new JButton("Escape");
         c.weightx = .5;
         c.ipady = 20;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
-        c.gridx = 0; c.gridy = 0;
+        c.gridx = 0;
+        c.gridy = 0;
         add(btnEscape, c);
 
         opt = new JPanel(new GridBagLayout());
@@ -38,7 +38,8 @@ public class RegistroMaterial extends JPanel {
         c.fill = GridBagConstraints.BOTH;
         c.ipady = 200;
         c.ipadx = 10;
-        c.gridx = 0; c.gridy = 1;
+        c.gridx = 0;
+        c.gridy = 1;
         add(opt, c);
         opt.setBackground(Color.black);
 
@@ -49,7 +50,8 @@ public class RegistroMaterial extends JPanel {
         c.anchor = GridBagConstraints.FIRST_LINE_END;
         c.ipadx = 120;
         c.ipady = 50;
-        c.gridx = 0; c.gridy = 2;
+        c.gridx = 0;
+        c.gridy = 2;
         add(btnConfirmar, c);
 
         btnConfirmar.addActionListener(new ActionListener() {
@@ -62,7 +64,7 @@ public class RegistroMaterial extends JPanel {
 
     public void agregarMaterial(int fila) {
         opt.removeAll();
-        final int[] i = {0};
+        final int[] i = { 0 };
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(5, 15, 5, 15);
         materiales.forEach(m -> {

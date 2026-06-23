@@ -70,4 +70,8 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
     public void setControlador(Controlador controlador) {
         this.controlador = controlador;
     }
+
+    public Controlador getControlador() {
+        return controlador;
+    }
 }
