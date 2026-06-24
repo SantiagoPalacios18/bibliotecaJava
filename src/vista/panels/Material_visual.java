@@ -28,10 +28,10 @@ public class Material_visual extends JPanel {
 
         add(titulo, BorderLayout.NORTH);
 
-//        -- Diseno
+        // -- Diseno
         titulo.setFont(new Font("Book Antiqua", Font.BOLD, 20));
 
-        if(!m.getDisponibilidad()) {
+        if (!m.getDisponibilidad()) {
             setBackground(Color.darkGray);
             titulo.setForeground(Color.white);
         }
@@ -40,18 +40,18 @@ public class Material_visual extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 cantClic++;
-                if(primera){
+                if (primera) {
                     primera = false;
-                    Timer t = new Timer(250,f ->{
-                        if(cantClic == 1 && m.getDisponibilidad() && e.getButton() == MouseEvent.BUTTON1) {
+                    Timer t = new Timer(250, f -> {
+                        if (cantClic == 1 && m.getDisponibilidad() && e.getButton() == MouseEvent.BUTTON1) {
                             if (!selected) {
                                 setBackground(Color.red);
                                 selected = true;
-                            }else{
+                            } else {
                                 setBackground(Color.white);
                                 selected = false;
                             }
-                        }else{
+                        } else {
                             new Material_visualEXTEND(m);
                         }
                         cantClic = 0;

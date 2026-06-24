@@ -21,16 +21,23 @@ public abstract class MaterialBiblioteca {
     public String getTitulo() {
         return titulo;
     }
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    public Image getImg() { return img; }
-    public void setImg(Image img) { this.img = img; }
+    public Image getImg() {
+        return img;
+    }
+
+    public void setImg(Image img) {
+        this.img = img;
+    }
 
     public String getAutor() {
         return autor;
     }
+
     public void setAutor(String autor) {
         this.autor = autor;
     }
@@ -38,18 +45,25 @@ public abstract class MaterialBiblioteca {
     public String getGenero() {
         return genero;
     }
+
     public void setGenero(String genero) {
         this.genero = genero;
     }
 
-    public boolean getDisponibilidad () { return disponibilidad; }
+    public boolean getDisponibilidad() {
+        return disponibilidad;
+    }
+
     public String showDisponibilidad() {
         if (getDisponibilidad() == true) {
             return "Disponible";
-        }else  {
+        } else {
             return "No Disponible";
         }
     }
-    public void setDisponibilidad (boolean disponibilidad) { this.disponibilidad = disponibilidad; }
+
+    public void setDisponibilidad(boolean disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
 
 }
