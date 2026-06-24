@@ -22,7 +22,7 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         setLocationRelativeTo(null); //Centra en la pantalla
         setPreferredSize(new Dimension(x, y)); //
         MainMenu menu = new MainMenu();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         ArrayList<MaterialBiblioteca> listaLibros = new ArrayList<MaterialBiblioteca>();
 
@@ -54,14 +54,16 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
             public void componentResized(ComponentEvent e) {
                 JPanel actPanel = (JPanel) getContentPane();
                 int w = actPanel.getWidth();
+                int fila;
                 if(actPanel instanceof RegistroMaterial) {
                     if (w >= (int) (scn.getWidth() * .65)) {
-                        ((RegistroMaterial) actPanel).agregarMaterial(6);
+                        fila = 6;
                     } else if (w <= (int) (scn.getWidth() * .65) && w >= (int) (scn.getWidth() * .25)) {
-                        ((RegistroMaterial) actPanel).agregarMaterial(3);
+                        fila = 3;
                     } else {
-                        ((RegistroMaterial) actPanel).agregarMaterial(1);
+                        fila = 1;
                     }
+                    ((RegistroMaterial) actPanel).agregarMaterial(fila);
                 }
             }
         });

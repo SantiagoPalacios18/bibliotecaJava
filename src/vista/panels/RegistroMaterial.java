@@ -29,18 +29,24 @@ public class RegistroMaterial extends JPanel {
         c.weightx = .5;
         c.ipady = 20;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
-        c.gridx = 0; c.gridy = 0;
+        c.gridx = 0;
+        c.gridy = 0;
         add(btnEscape, c);
 
-        opt = new JPanel(new GridBagLayout());
-        c.weightx = .5;
+        opt = new RegistroMaterial_OPT();
+
+        c.weightx = 1;
         c.weighty = 1;
         c.fill = GridBagConstraints.BOTH;
-        c.ipady = 200;
-        c.ipadx = 10;
-        c.gridx = 0; c.gridy = 1;
-        add(opt, c);
+        c.gridx = 0;
+        c.gridy = 1;
         opt.setBackground(Color.black);
+
+        JScrollPane scroll = new JScrollPane(opt);
+        scroll.setBackground(Color.black);
+        scroll.setWheelScrollingEnabled(true);
+
+        add(scroll, c);
 
         btnConfirmar = new JButton("Confirmar");
         c.weightx = .5;
@@ -62,16 +68,17 @@ public class RegistroMaterial extends JPanel {
 
     public void agregarMaterial(int fila) {
         opt.removeAll();
+        int w = (opt.getWidth() / fila) -20;
+        System.out.println(opt.getWidth() + " " + fila + " " + w);
         final int[] i = {0};
         GridBagConstraints c = new GridBagConstraints();
-        c.insets = new Insets(5, 15, 5, 15);
+        c.insets = new Insets(20, 0, 0, 0);
         materiales.forEach(m -> {
-            c.weightx = .5;
-            c.fill = GridBagConstraints.HORIZONTAL;
+            c.weightx = 1;
             c.anchor = GridBagConstraints.CENTER;
             c.gridx = i[0] % fila;
             c.gridy = i[0] / fila;
-            opt.add(new Material_visual(m), c);
+            opt.add(new Material_visual(m, w), c);
             i[0]++;
         });
         opt.revalidate();

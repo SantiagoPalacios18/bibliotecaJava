@@ -9,20 +9,24 @@ import java.awt.event.MouseEvent;
 
 public class Material_visual extends JPanel {
     private final MaterialBiblioteca m;
+    private Image portada;
+    private int w;
+
     private boolean selected;
 
     private boolean primera = true;
     private int cantClic = 0;
-    private Image portada;
 
-    public Material_visual(MaterialBiblioteca m) {
+    public Material_visual(MaterialBiblioteca m, int w) {
         this.m = m;
+        this.w = w;
         portada = m.getImg();
 
         setLayout(new BorderLayout());
+
         JLabel titulo = new JLabel("Titulo: " + m.getTitulo());
 
-        add(titulo);
+        add(titulo, BorderLayout.NORTH);
 
 //        -- Diseno
         titulo.setFont(new Font("Book Antiqua", Font.BOLD, 20));
@@ -63,21 +67,24 @@ public class Material_visual extends JPanel {
     @Override
     public Dimension getPreferredSize() {
 
-        int x = getWidth();
-        int y = (int) (getWidth() * 1.6) + 30;
+        int x = w;
+        int y = (int) (x * 1.6) + 30;
+
 
         return new Dimension(x, y);
     }
+//
+//    @Override
+//    protected void paintComponent(Graphics g) {
+//        super.paintComponent(g);
+//
+//        if (portada != null) {
+//            int ancho = getWidth();
+//            int alto = (int) (ancho * 1.6);
+//
+//            g.drawImage(portada, 0, 30, ancho, alto, this);
+//            setPreferredSize(new Dimension(ancho, 500));
+//        }
+//    }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        if (portada != null) {
-            int ancho = this.getWidth();
-            int alto = (int) (ancho * 1.60);
-
-            g.drawImage(portada, 0, 30, ancho, alto, this);
-        }
-    }
 }
