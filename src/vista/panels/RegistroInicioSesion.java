@@ -12,7 +12,8 @@ public class RegistroInicioSesion extends JPanel {
     private final Color COLOR_FONDO = Color.decode("#676e80ff");
     private final Color COLOR_TEXTO = Color.decode("#f8fafc");
     private final Color COLOR_PRIMARIO = Color.decode("#6366f1");
-
+    
+    
     // JPanel Principal: Botones de registro e iniciar sesion
     public RegistroInicioSesion() {
         cardLayout = new CardLayout();
@@ -62,10 +63,12 @@ public class RegistroInicioSesion extends JPanel {
         JTextField txtNombre = crearCampoTexto();
         JTextField txtApellido = crearCampoTexto();
         JTextField txtEmail = crearCampoTexto();
-
+        
+        
         // Acción para cambiar de panel
         btnRegistrarse.addActionListener(e -> cardLayout.show(contenedorCentral, "REGISTRO"));
-
+        btnIniciarSesion.addActionListener(e -> cardLayout.show(contenedorCentral, "SESION"));
+        
         btnRegistrarse.setFocusPainted(false);
         btnRegistrarse.setBorderPainted(false);
 
@@ -78,7 +81,7 @@ public class RegistroInicioSesion extends JPanel {
     // -------------------- PANEL 2: EL REGISTRO --------------------
     private JPanel crearPanelRegistro() {
         JPanel registro = new JPanel();
-        registro.add(new JLabel("Aquí 💥 tus campos de texto de registro"));
+        registro.add(new JLabel(""));
 
         JButton btnVolver = new JButton("Volver al Menú");
         btnVolver.addActionListener(e -> cardLayout.show(contenedorCentral, "MENU"));
