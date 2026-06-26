@@ -80,7 +80,7 @@ public class RegistroInicioSesion extends JPanel {
 
     // -------------------- PANEL 2: EL REGISTRO --------------------
     private JPanel crearPanelRegistro() {
-        JPanel registro = new JPanel();
+        JPanel registro = new JPanel(new GridBagLayout());
         registro.add(new JLabel(""));
 
         JButton btnVolver = new JButton("Volver al Menú");
@@ -88,15 +88,50 @@ public class RegistroInicioSesion extends JPanel {
         registro.add(btnVolver);
 
         JTextField txtNombre = crearCampoTexto();
+        c.gridy = 0;
+        c.ipadx = 300;
+        c.ipady = 30;
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 0;
+        registro.add(txtNombre, c);
+
         JTextField txtApellido = crearCampoTexto();
+        c.gridy = 0;
+        c.ipadx = 300;
+        c.ipady = 30;
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 0;
+        registro.add(txtApellido, c);
+
         JTextField txtEmail = crearCampoTexto();
+        c.gridy = 0;
+        c.ipadx = 300;
+        c.ipady = 30;
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 1;
+        registro.add(txtEmail, c);
+
         JPasswordField txtPassword = crearCampoPassword();
+        c.gridy = 0;
+        c.ipadx = 300;
+        c.ipady = 30;
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 3;
+        registro.add(txtPassword, c);
+
         JPasswordField txtConfirmPassword = crearCampoPassword();
-        registro.add(txtNombre);
-        registro.add(txtApellido);
-        registro.add(txtEmail);
-        registro.add(txtPassword);
-        registro.add(txtConfirmPassword);
+        c.gridy = 0;
+        c.ipadx = 300;
+        c.ipady = 30;
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 4;
+
+        registro.add(txtConfirmPassword, c);
 
         return registro;
     }
