@@ -145,6 +145,25 @@ public class RegistroInicioSesion extends JPanel {
         btnVolver.addActionListener(e -> cardLayout.show(contenedorCentral, "MENU"));
         sesion.add(btnVolver);
 
+        JTextField txtEmail = crearCampoTexto();
+        c.gridy = 0;
+        c.ipadx = 300;
+        c.ipady = 30;
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 0;
+        sesion.add(txtEmail, c);
+
+        JPasswordField txtPassword = crearCampoPassword();
+        c.gridy = 0;
+        c.ipadx = 300;
+        c.ipady = 30;
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 1;
+        sesion.add(txtPassword, c);
+
+        
         return sesion;
     }
 
