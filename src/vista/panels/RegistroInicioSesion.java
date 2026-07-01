@@ -86,6 +86,7 @@ public class RegistroInicioSesion extends JPanel {
         JButton btnVolver = new JButton("Volver al Menú");
         btnVolver.addActionListener(e -> cardLayout.show(contenedorCentral, "MENU"));
         registro.add(btnVolver);
+        GridBagConstraints c = new GridBagConstraints();
 
         JTextField txtNombre = crearCampoTexto();
         c.gridy = 0;
@@ -144,6 +145,7 @@ public class RegistroInicioSesion extends JPanel {
         JButton btnVolver = new JButton("Volver al Menú");
         btnVolver.addActionListener(e -> cardLayout.show(contenedorCentral, "MENU"));
         sesion.add(btnVolver);
+        GridBagConstraints c = new  GridBagConstraints();
 
         JTextField txtEmail = crearCampoTexto();
         c.gridy = 0;

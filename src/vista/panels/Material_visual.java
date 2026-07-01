@@ -24,16 +24,19 @@ public class Material_visual extends JPanel {
 
         setLayout(new BorderLayout());
 
-        JLabel titulo = new JLabel("Titulo: " + m.getTitulo());
+        JLabel titulo = new JLabel(m.getTitulo());
 
         add(titulo, BorderLayout.NORTH);
 
         // -- Diseno
-        titulo.setFont(new Font("Book Antiqua", Font.BOLD, 20));
+        titulo.setFont(new Font("Book Antiqua", Font.BOLD, 17));
 
         if (!m.getDisponibilidad()) {
             setBackground(Color.darkGray);
             titulo.setForeground(Color.white);
+        }else{
+            setBackground(Color.white);
+            titulo.setForeground(Color.black);
         }
 
         addMouseListener(new MouseAdapter() {
@@ -68,23 +71,23 @@ public class Material_visual extends JPanel {
     public Dimension getPreferredSize() {
 
         int x = w;
-        int y = (int) (x * 1.6) + 30;
+        int y = (int) (x * 1.35) +30;
 
 
         return new Dimension(x, y);
     }
-//
-//    @Override
-//    protected void paintComponent(Graphics g) {
-//        super.paintComponent(g);
-//
-//        if (portada != null) {
-//            int ancho = getWidth();
-//            int alto = (int) (ancho * 1.6);
-//
-//            g.drawImage(portada, 0, 30, ancho, alto, this);
-//            setPreferredSize(new Dimension(ancho, 500));
-//        }
-//    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        if (portada != null) {
+            int ancho = getWidth() - 20;
+            int alto = (int) (ancho * 1.35);
+
+            g.drawImage(portada, 10, 30, ancho, alto, this);
+            setPreferredSize(new Dimension(ancho, 500));
+        }
+    }
 
 }

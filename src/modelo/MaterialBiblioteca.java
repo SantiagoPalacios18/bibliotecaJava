@@ -5,13 +5,15 @@ import java.awt.*;
 
 public abstract class MaterialBiblioteca {
     private String titulo;
+    private String descripcion;
     private Image img;
     private String autor;
     private String genero;
     private boolean disponibilidad;
 
-    public MaterialBiblioteca(String titulo, String img, String autor, String genero) {
+    public MaterialBiblioteca(String titulo, String descripcion, String img, String autor, String genero) {
         this.titulo = titulo;
+        this.descripcion = descripcion;
         this.img = new ImageIcon(img).getImage();
         this.autor = autor;
         this.genero = genero;
@@ -24,6 +26,12 @@ public abstract class MaterialBiblioteca {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getDescripcion() { return descripcion; }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Image getImg() {

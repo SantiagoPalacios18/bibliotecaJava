@@ -26,28 +26,34 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
 
         ArrayList<MaterialBiblioteca> listaLibros = new ArrayList<MaterialBiblioteca>();
 
-        Libro libro1 = new Libro("Vivaldi", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
+        Libro libro1 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+                "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
         libro1.setDisponibilidad(false);
         listaLibros.add(libro1);
 
-        Libro libro2 = new Libro("Recetas con pan", "./assets/eadlt-vol1.jpg", "h4terCel1ac0s1221", "Cocina");
+        Libro libro2 = new Libro("Recetas con pan", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+                "./assets/eadlt-vol1.jpg", "h4terCel1ac0s1221", "Cocina");
         listaLibros.add(libro2);
 
-        Libro libro3 = new Libro("ComoCocinarCentollas", "./assets/eadlt-vol1.jpg", "ha73rS4p4110s", "Navegadores");
+        Libro libro3 = new Libro("ComoCocinarCentollas", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "ha73rS4p4110s", "Navegadores");
         listaLibros.add(libro3);
 
-        Libro libro4 = new Libro("Vivaldi", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
+        Libro libro4 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
         listaLibros.add(libro4);
 
-        Libro libro5 = new Libro("Vivaldi", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
+        Libro libro5 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
         listaLibros.add(libro5);
 
-        Libro libro6 = new Libro("Vivaldi", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
+        Libro libro6 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
         listaLibros.add(libro6);
 
+        UIManager.put("Button.background", Color.red);
+        UIManager.put("Button.foreground", Color.white);
+        UIManager.put("Panel.background", Color.darkGray);
+
         RegistroMaterial test = new RegistroMaterial(listaLibros);
-        RegistroInicioSesion rls = new RegistroInicioSesion();
-        setContentPane(rls);
+        //RegistroInicioSesion rls = new RegistroInicioSesion();
+        setContentPane(test);
 
         addComponentListener(new ComponentAdapter() {
             @Override

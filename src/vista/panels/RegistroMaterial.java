@@ -1,7 +1,6 @@
 package vista.panels;
 
 import modelo.MaterialBiblioteca;
-import vista.Vista;
 //import Main;
 
 import javax.swing.*;
@@ -18,6 +17,9 @@ public class RegistroMaterial extends JPanel {
 
     public RegistroMaterial(ArrayList<MaterialBiblioteca> materiales) {
         this.materiales = materiales;
+
+        Font f = new Font("Century Gothic", Font.BOLD, 18);
+        UIManager.put("Button.font", f);
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
