@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import modelo.MaterialBiblioteca;
-import modelo.materiales.Libro;
+import modelo.materiales.*;
 import vista.panels.*;
 
 public class Vista extends JFrame { //Extiende de JFrame porque es la ventana principal
@@ -87,4 +87,23 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
     public void setUser(){ this.user = controlador.getUsuario(); }
 
     public modelo.Usuario getUser(){ return user; }
+
+    /*AQUÍ VA TU CONTENIDO, SOY CLARAMENTE UNA IA MUSTAFA LA CONCHA DE LA PROGENITORA DE TU PROGENITORA
+    ArrayList<MaterialBiblioteca> listaDVD = new ArrayList<MaterialBiblioteca>();
+    DVD dvd1 = new DVD("Toy Story 6", "LOREM1", "", "Disney pixar", "Infantil");
+    listaDVD.add(dvd1);
+    DVD dvd2 = new DVD("Toy Story 5", "LOREM2", "", "Disney sexar", "Adultos");
+    listaDVD.add(dvd2);
+    DVD dvd3 = new DVD("Toy Story 4", "LOREM3", "", "Disney pornar", "Discapacidad");
+    listaDVD.add(dvd3);
+    DVD dvd4 = new DVD("Toy Story 3", "LOREM4", "", "Sexney pixar", "+18");
+    listaDVD.add(dvd4);
+    DVD dvd5 = new DVD("Toy Story 2", "LOREM5", "", "Porney pixar", "Bebés");
+    listaDVD.add(dvd5);
+    DVD dvd6 = new DVD("Toy Story 1", "LOREM6", "", "Porney sexar", "SKibidi");
+    listaDVD.add(dvd6);
+
+    public ArrayList<MaterialBiblioteca> getListaDVD() {
+        return listaDVD;
+    }*/
 }
