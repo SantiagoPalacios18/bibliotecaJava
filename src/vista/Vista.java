@@ -11,6 +11,7 @@ import vista.panels.*;
 
 public class Vista extends JFrame { //Extiende de JFrame porque es la ventana principal
     private Controlador controlador;
+    protected modelo.Usuario user;
 
     public Vista(int x, int y) {
         Toolkit tk = Toolkit.getDefaultToolkit();
@@ -52,8 +53,8 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         UIManager.put("Panel.background", Color.darkGray);
 
         RegistroMaterial test = new RegistroMaterial(listaLibros);
-        //RegistroInicioSesion rls = new RegistroInicioSesion();
-        setContentPane(test);
+        RegistroInicioSesion rls = new RegistroInicioSesion();
+        setContentPane(rls);
 
         addComponentListener(new ComponentAdapter() {
             @Override
@@ -82,4 +83,8 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
     public Controlador getControlador() {
         return controlador;
     }
+
+    public void setUser(){ this.user = controlador.getUsuario(); }
+
+    public modelo.Usuario getUser(){ return user; }
 }

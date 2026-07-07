@@ -25,7 +25,7 @@ public class RegistroInicioSesion extends JPanel {
         contenedorCentral.add(crearPanelMenu(), "MENU");
         contenedorCentral.add(crearPanelRegistro(), "REGISTRO");
         contenedorCentral.add(crearPanelSesion(), "SESION");
-        // Al inciio se muestra el panel MENU
+        // Al inicio se muestra el panel MENU
         cardLayout.show(contenedorCentral, "MENU");
 
     }
@@ -42,22 +42,28 @@ public class RegistroInicioSesion extends JPanel {
         lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 36));
         lblTitulo.setForeground(COLOR_TEXTO);
 
-        menu.add(lblTitulo, c);
-        JButton btnRegistrarse = crearBotonRedondeado("Registrarse", 15);
-        c.ipadx = 530;
-        c.ipady = 60;
-        c.insets = new Insets(50, 5, 50, 5);
-        c.anchor = GridBagConstraints.CENTER;
+        c.weightx = 1;
+        c.weighty = 1;
+
         c.gridx = 0;
         c.gridy = 0;
+        menu.add(lblTitulo, c);
+
+        JButton btnRegistrarse = crearBotonRedondeado("Registrarse", 15);
+        c.ipadx = 0;
+        c.ipady = 60;
+        c.insets = new Insets(50, 25, 50, 25);
+        c.anchor = GridBagConstraints.CENTER;
+        c.fill  = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 1;
         menu.add(btnRegistrarse, c);
         JButton btnIniciarSesion = crearBotonRedondeado("Iniciar Sesión", 15);
-        c.gridy = 2;
         c.ipadx = 520;
         c.ipady = 60;
         c.anchor = GridBagConstraints.CENTER;
         c.gridx = 0;
-        c.gridy = 1;
+        c.gridy = 2;
         menu.add(btnIniciarSesion, c);
 
         JTextField txtNombre = crearCampoTexto();

@@ -70,6 +70,9 @@ public class MainMenu extends JPanel { //
 
         // ---Listeners
 
+        btnLibro.addActionListener(e -> {
+
+        });
     }
 
     /*

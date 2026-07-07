@@ -1,36 +1,40 @@
 package controlador;
 
-import modelo.Modelo;
+import modelo.Biblioteca;
 import modelo.Usuario;
 import vista.Vista;
 
 public class Controlador {
     private Vista vista;
-    private Modelo modelo;
+    private Biblioteca biblioteca;
 
     // Constructor
-    public Controlador(Vista vista, Modelo modelo) {
+    public Controlador(Vista vista, Biblioteca biblioteca) {
         this.vista = vista;
-        this.modelo = modelo;
+        this.biblioteca = biblioteca;
         this.vista.setControlador(this);
-        this.modelo.setControlador(this);
+        this.biblioteca.setControlador(this);
     }
 
     public boolean registrarUsuario(String nombre, String apellido, String mail, String contrasena) {
-        return modelo.registrarUsuario(new Usuario(nombre, apellido, mail, contrasena));
+        return biblioteca.registrarUsuario(new Usuario(nombre, apellido, mail, contrasena));
     }
 
     public Usuario iniciarSesion(String mail, String contrasena) {
-        Usuario user = modelo.validarDatos(mail, contrasena);
+        Usuario user = biblioteca.validarDatos(mail, contrasena);
         if (user != null) {
-            modelo.setUsuarioLogueado(user);
+            biblioteca.setUsuarioLogueado(user);
         }
 
         return user;
     }
 
-    public Modelo getModelo() {
-        return modelo;
+    public Usuario getUsuario() {
+        return biblioteca.getUsuarioLogueado();
+    }
+
+    public Biblioteca getModelo() {
+        return biblioteca;
     }
 
     public Vista getVista() {
