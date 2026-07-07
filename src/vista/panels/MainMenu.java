@@ -74,9 +74,9 @@ public class MainMenu extends JPanel { //
 
         });
 
-        btnDVD.addActionListener(e -> {
+        /*btnDVD.addActionListener(e -> {
             RegistroMaterial matDVD = new RegistroMaterial(vista.getListaDVD());
-        });
+        });*/
     }
 
     /*
