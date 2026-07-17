@@ -1,5 +1,6 @@
 package vista;
 
+import com.sun.tools.javac.Main;
 import controlador.Controlador;
 import java.awt.*;
 import java.awt.event.*;
@@ -11,7 +12,7 @@ import vista.panels.*;
 
 public class Vista extends JFrame { //Extiende de JFrame porque es la ventana principal
     private Controlador controlador;
-    protected modelo.Usuario user;
+    private MainMenu menu;
 
     public Vista(int x, int y) {
         Toolkit tk = Toolkit.getDefaultToolkit();
@@ -22,39 +23,38 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         setSize(x, y);
         setLocationRelativeTo(null); //Centra en la pantalla
         setPreferredSize(new Dimension(x, y)); //
-        MainMenu menu = new MainMenu();
         //setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-        ArrayList<MaterialBiblioteca> listaLibros = new ArrayList<MaterialBiblioteca>();
-
-        Libro libro1 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
-                "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
-        libro1.setDisponibilidad(false);
-        listaLibros.add(libro1);
-
-        Libro libro2 = new Libro("Recetas con pan", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
-                "./assets/eadlt-vol1.jpg", "h4terCel1ac0s1221", "Cocina");
-        listaLibros.add(libro2);
-
-        Libro libro3 = new Libro("ComoCocinarCentollas", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "ha73rS4p4110s", "Navegadores");
-        listaLibros.add(libro3);
-
-        Libro libro4 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
-        listaLibros.add(libro4);
-
-        Libro libro5 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
-        listaLibros.add(libro5);
-
-        Libro libro6 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
-        listaLibros.add(libro6);
+//
+//        ArrayList<MaterialBiblioteca> listaLibros = new ArrayList<MaterialBiblioteca>();
+//
+//        Libro libro1 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+//                "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
+//        libro1.setDisponibilidad(false);
+//        listaLibros.add(libro1);
+//
+//        Libro libro2 = new Libro("Recetas con pan", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+//                "./assets/eadlt-vol1.jpg", "h4terCel1ac0s1221", "Cocina");
+//        listaLibros.add(libro2);
+//
+//        Libro libro3 = new Libro("ComoCocinarCentollas", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "ha73rS4p4110s", "Navegadores");
+//        listaLibros.add(libro3);
+//
+//        Libro libro4 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
+//        listaLibros.add(libro4);
+//
+//        Libro libro5 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
+//        listaLibros.add(libro5);
+//
+//        Libro libro6 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
+//        listaLibros.add(libro6);
 
         UIManager.put("Button.background", Color.red);
         UIManager.put("Button.foreground", Color.white);
         UIManager.put("Panel.background", Color.darkGray);
 
-        RegistroMaterial test = new RegistroMaterial(listaLibros);
-        RegistroInicioSesion rls = new RegistroInicioSesion();
-        setContentPane(rls);
+//        RegistroMaterial test = new RegistroMaterial(listaLibros);
+//        RegistroInicioSesion rls = new RegistroInicioSesion();
+//        setContentPane(rls);
 
         addComponentListener(new ComponentAdapter() {
             @Override
@@ -76,6 +76,24 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         });
     }
 
+    public void setPanel(JPanel panel) {
+        setContentPane(panel);
+        repaint();
+        revalidate();
+    }
+
+    public void abrirMenu(int menu, Vista vista) {
+        ArrayList<MaterialBiblioteca> materiales = new ArrayList<>();
+        switch(menu){
+            case 1: materiales = controlador.getListaLibros(); break;
+            case 2: materiales = controlador.getListaRevistas(); break;
+            case 3: materiales = controlador.getListaDVD(); break;
+            default: System.out.println("Valor fuera de rango (>0, <4)"); break;
+        }
+        RegistroMaterial newMenu = new RegistroMaterial(materiales, vista);
+        setPanel(newMenu);
+    }
+
     public void setControlador(Controlador controlador) {
         this.controlador = controlador;
     }
@@ -84,9 +102,20 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         return controlador;
     }
 
-    public void setUser(){ this.user = controlador.getUsuario(); }
+    public MainMenu getMenu() {
+        return menu;
+    }
 
-    public modelo.Usuario getUser(){ return user; }
+    public void setMenu(MainMenu menu) {
+        this.menu = menu;
+        setPanel(menu);
+    }
+
+    public void finalizar(){
+        controlador.setUsuarioLogueado(null);
+        RegistroInicioSesion ris = new RegistroInicioSesion();
+        setPanel(ris);
+    }
 
     /*AQUÍ VA TU CONTENIDO, SOY CLARAMENTE UNA IA MUSTAFA LA CONCHA DE LA PROGENITORA DE TU PROGENITORA
     ArrayList<MaterialBiblioteca> listaDVD = new ArrayList<MaterialBiblioteca>();

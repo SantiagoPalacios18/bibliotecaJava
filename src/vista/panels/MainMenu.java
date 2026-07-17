@@ -1,26 +1,33 @@
 package vista.panels;
 
 import vista.Vista;
+import modelo.Biblioteca;
 import javax.swing.*;
 import java.awt.*;
 
 public class MainMenu extends JPanel { //
-    private JButton btnLibro, btnRevista, btnDVD, btnEscape;
+    private JButton btnLibro, btnRevista, btnDVD, btnFinal;
+    private final Vista vista;
 
-    public MainMenu() {
+    public MainMenu(Vista vista) {
+        this.vista = vista;
         setLayout(new GridBagLayout()); // Cambio el layout
         GridBagConstraints c = new GridBagConstraints(); // Creo el objeto que tiene los atributos de posicion de los
                                                          // demas componentes
+
         c.insets = new Insets(5, 5, 5, 5); // Padding default en todos los elementos
 
         // ---Estructura
-        btnEscape = new JButton("Escape");
+        btnFinal = new JButton("Finalizar");
         c.weightx = .5; // Le indica al componente que ocupe t0do el ancho de su contenedor
-        c.ipady = 20; // Padding interno del componente
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.ipady = 70; // Padding interno del component
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.gridx = 0;
         c.gridy = 0;
-        add(btnEscape, c);
+        add(btnFinal, c);
+
+        c.insets = new Insets(50, 20, 50, 20);
 
         btnLibro = new JButton("Libro");
         c.weighty = .5;
@@ -42,41 +49,25 @@ public class MainMenu extends JPanel { //
         c.gridy = 1;
         add(btnDVD, c);
 
-        JLabel lblTitulo = new JLabel("Registro biblioteca");
-        lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 35));
-        lblTitulo.setBackground(Color.RED);
-        c.weighty = 0;
-        c.weightx = 1;
-        c.ipady = 30;
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.anchor = GridBagConstraints.CENTER;
-        c.gridy = 2;
-        c.gridx = 0;
-        c.gridwidth = 3;
-        ImageIcon imagen = new ImageIcon("./assets/test.png");
-        add(lblTitulo, c);
-
-        // ---Design
-
-        btnEscape.setBackground(Color.RED);
-
-        btnLibro.setBackground(Color.BLUE);
-
-        btnRevista.setBackground(Color.GREEN);
-
-        btnDVD.setBackground(Color.YELLOW);
-
-        lblTitulo.setIcon(imagen);
-
         // ---Listeners
 
-        btnLibro.addActionListener(e -> {
-
+        btnFinal.addActionListener(e -> {
+            vista.finalizar();
         });
 
-        /*btnDVD.addActionListener(e -> {
-            RegistroMaterial matDVD = new RegistroMaterial(vista.getListaDVD());
-        });*/
+        btnLibro.addActionListener(e -> {
+            vista.abrirMenu(1, vista);
+        });
+
+        btnRevista.addActionListener(e -> {
+            vista.abrirMenu(2, vista);
+        });
+
+        btnDVD.addActionListener(e -> {
+            vista.abrirMenu(3, vista);
+        });
+
+
     }
 
     /*

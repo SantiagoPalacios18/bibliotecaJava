@@ -1,8 +1,11 @@
 package controlador;
 
 import modelo.Biblioteca;
+import modelo.MaterialBiblioteca;
 import modelo.Usuario;
 import vista.Vista;
+
+import java.util.ArrayList;
 
 public class Controlador {
     private Vista vista;
@@ -29,9 +32,18 @@ public class Controlador {
         return user;
     }
 
+    public void setUsuarioLogueado(Usuario user){
+        biblioteca.setUsuarioLogueado(user);
+    }
+
     public Usuario getUsuario() {
         return biblioteca.getUsuarioLogueado();
     }
+
+    public ArrayList<Usuario> getUsuarios() { return biblioteca.getUsuarios(); }
+    public ArrayList<MaterialBiblioteca> getListaLibros() { return biblioteca.getListaLibros(); }
+    public ArrayList<MaterialBiblioteca> getListaRevistas() { return biblioteca.getListaRevistas(); }
+    public ArrayList<MaterialBiblioteca> getListaDVD() { return biblioteca.getListaDVD(); }
 
     public Biblioteca getModelo() {
         return biblioteca;
@@ -40,4 +52,5 @@ public class Controlador {
     public Vista getVista() {
         return vista;
     }
+
 }

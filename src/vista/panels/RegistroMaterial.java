@@ -1,7 +1,7 @@
 package vista.panels;
 
 import modelo.MaterialBiblioteca;
-//import Main;
+import vista.Vista;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,9 +14,11 @@ public class RegistroMaterial extends JPanel {
     private JButton btnEscape;
     private JPanel opt;
     private JButton btnConfirmar;
+    private Vista vista;
 
-    public RegistroMaterial(ArrayList<MaterialBiblioteca> materiales) {
+    public RegistroMaterial(ArrayList<MaterialBiblioteca> materiales,  Vista vista) {
         this.materiales = materiales;
+        this.vista = vista;
 
         Font f = new Font("Century Gothic", Font.BOLD, 18);
         UIManager.put("Button.font", f);
@@ -60,11 +62,12 @@ public class RegistroMaterial extends JPanel {
         c.gridx = 0; c.gridy = 2;
         add(btnConfirmar, c);
 
-        btnConfirmar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        btnConfirmar.addActionListener(e -> {
 
-            }
+        });
+
+        btnEscape.addActionListener(e -> {
+            vista.setMenu(vista.getMenu());
         });
     }
 
