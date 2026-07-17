@@ -48,8 +48,15 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
 //        Libro libro6 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
 //        listaLibros.add(libro6);
 
+        Font fontBtn = new Font("Century Gothic", Font.BOLD, 20);
+        UIManager.put("Label.foreground", Color.white);
         UIManager.put("Button.background", Color.red);
         UIManager.put("Button.foreground", Color.white);
+        UIManager.put("Button.font", fontBtn);
+        UIManager.put("Button.border", null);
+        UIManager.put("TextField.border", null);
+        UIManager.put("TextField.font", fontBtn);
+        UIManager.put("TextField.background", Color.decode("#FFE3E7"));
         UIManager.put("Panel.background", Color.darkGray);
 
 //        RegistroMaterial test = new RegistroMaterial(listaLibros);

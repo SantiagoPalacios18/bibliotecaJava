@@ -9,9 +9,9 @@ public class RegistroInicioSesion extends JPanel {
     private JPanel contenedorCentral;
     private CardLayout cardLayout;
 
-    private final Color COLOR_FONDO = Color.decode("#676e80ff");
-    private final Color COLOR_TEXTO = Color.decode("#f8fafc");
-    private final Color COLOR_PRIMARIO = Color.decode("#6366f1");
+    //private final Color COLOR_FONDO = Color.decode("#676e80ff");
+    //private final Color COLOR_TEXTO = Color.decode("#f8fafc");
+    //private final Color COLOR_PRIMARIO = Color.decode("#6366f1");
     
     
     // JPanel Principal: Botones de registro e iniciar sesion
@@ -35,12 +35,12 @@ public class RegistroInicioSesion extends JPanel {
         JPanel menu = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(5, 5, 5, 5);
-        menu.setBackground(COLOR_FONDO);
+        //menu.setBackground(COLOR_FONDO);
 
         // Titulo
         JLabel lblTitulo = new JLabel("Sistema Biblioteca");
         lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 36));
-        lblTitulo.setForeground(COLOR_TEXTO);
+        //lblTitulo.setForeground(COLOR_TEXTO);
 
         c.weightx = 1;
         c.weighty = 1;
@@ -81,6 +81,7 @@ public class RegistroInicioSesion extends JPanel {
         btnIniciarSesion.setFocusPainted(false);
         btnIniciarSesion.setBorderPainted(false);
 
+
         return menu;
     }
 
@@ -88,57 +89,77 @@ public class RegistroInicioSesion extends JPanel {
     private JPanel crearPanelRegistro() {
         JPanel registro = new JPanel(new GridBagLayout());
         registro.add(new JLabel(""));
+        GridBagConstraints c = new GridBagConstraints();
+
+        c.weightx = 1;
+        c.weighty = 0;
 
         JButton btnVolver = new JButton("Volver al Menú");
         btnVolver.addActionListener(e -> cardLayout.show(contenedorCentral, "MENU"));
-        registro.add(btnVolver);
-        GridBagConstraints c = new GridBagConstraints();
-
-        JTextField txtNombre = crearCampoTexto();
-        c.gridy = 0;
-        c.ipadx = 300;
+        btnVolver.setBorder(null);
+        c.ipadx = 120;
         c.ipady = 30;
-        c.anchor = GridBagConstraints.CENTER;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
+        c.fill  = GridBagConstraints.NONE;
         c.gridx = 0;
         c.gridy = 0;
-        registro.add(txtNombre, c);
+        registro.add(btnVolver, c);
 
-        JTextField txtApellido = crearCampoTexto();
-        c.gridy = 0;
-        c.ipadx = 300;
-        c.ipady = 30;
-        c.anchor = GridBagConstraints.CENTER;
-        c.gridx = 0;
-        c.gridy = 0;
-        registro.add(txtApellido, c);
+        JPanel formulario =  new JPanel(new GridBagLayout());
+        c.insets = new Insets(10, 20, 10, 20);
 
-        JTextField txtEmail = crearCampoTexto();
-        c.gridy = 0;
-        c.ipadx = 300;
-        c.ipady = 30;
+//----------Contenido Formulario-------------------------------------------------------
+            JLabel titulo  = new JLabel("Ingresa los datos");
+
+            JTextField txtNombre = crearCampoTexto();
+            c.fill  = GridBagConstraints.BOTH;
+            c.anchor = GridBagConstraints.CENTER;
+            c.gridx = 0;
+            c.gridy = 0;
+            formulario.add(txtNombre, c);
+
+            JTextField txtApellido = crearCampoTexto();
+            c.fill  = GridBagConstraints.BOTH;
+            c.anchor = GridBagConstraints.CENTER;
+            c.gridx = 0;
+            c.gridy = 1;
+            formulario.add(txtApellido, c);
+
+            JTextField txtEmail = crearCampoTexto();
+            c.fill  = GridBagConstraints.BOTH;
+            c.anchor = GridBagConstraints.CENTER;
+            c.gridx = 0;
+            c.gridy = 2;
+            formulario.add(txtEmail, c);
+
+            JPasswordField txtPassword = crearCampoPassword();
+            c.fill  = GridBagConstraints.BOTH;
+            c.anchor = GridBagConstraints.CENTER;
+            c.gridx = 0;
+            c.gridy = 3;
+            formulario.add(txtPassword, c);
+
+            JPasswordField txtConfirmPassword = crearCampoPassword();
+            c.fill  = GridBagConstraints.BOTH;
+            c.anchor = GridBagConstraints.CENTER;
+            c.gridx = 0;
+            c.gridy = 4;
+
+            formulario.add(txtConfirmPassword, c);
+
+            JButton btnRegistro = new JButton("Registrar");
+            btnRegistro.addActionListener(e -> {});
+
+
+//------------------------------------------------------------------------------------
+
+        c.weighty = 1;
+        c.fill  = GridBagConstraints.NONE;
         c.anchor = GridBagConstraints.CENTER;
         c.gridx = 0;
         c.gridy = 1;
-        registro.add(txtEmail, c);
-
-        JPasswordField txtPassword = crearCampoPassword();
-        c.gridy = 0;
-        c.ipadx = 300;
-        c.ipady = 30;
-        c.anchor = GridBagConstraints.CENTER;
-        c.gridx = 0;
-        c.gridy = 3;
-        registro.add(txtPassword, c);
-
-        JPasswordField txtConfirmPassword = crearCampoPassword();
-        c.gridy = 0;
-        c.ipadx = 300;
-        c.ipady = 30;
-        c.anchor = GridBagConstraints.CENTER;
-        c.gridx = 0;
-        c.gridy = 4;
-
-        registro.add(txtConfirmPassword, c);
+        registro.add(formulario, c);
+        formulario.setBackground(Color.red);
 
         return registro;
     }
@@ -154,7 +175,6 @@ public class RegistroInicioSesion extends JPanel {
         GridBagConstraints c = new  GridBagConstraints();
 
         JTextField txtEmail = crearCampoTexto();
-        c.gridy = 0;
         c.ipadx = 300;
         c.ipady = 30;
         c.anchor = GridBagConstraints.CENTER;
@@ -163,7 +183,6 @@ public class RegistroInicioSesion extends JPanel {
         sesion.add(txtEmail, c);
 
         JPasswordField txtPassword = crearCampoPassword();
-        c.gridy = 0;
         c.ipadx = 300;
         c.ipady = 30;
         c.anchor = GridBagConstraints.CENTER;
@@ -193,14 +212,15 @@ public class RegistroInicioSesion extends JPanel {
             }
         };
 
-        boton.setBackground(Color.decode("#a0a0a0"));
-        boton.setForeground(Color.WHITE);
-        boton.setFont(new Font("Arial", Font.BOLD, 30));
+        //boton.setBackground(Color.decode("#a0a0a0"));
+        //boton.setForeground(Color.WHITE);
+        //boton.setFont(new Font("Arial", Font.BOLD, 30));
         boton.setFocusPainted(false);
         boton.setBorderPainted(false);
         boton.setContentAreaFilled(false);
         boton.setOpaque(false);
         boton.setBorder(new EmptyBorder(10, 20, 10, 20));
+        boton.setFont(new Font("Century Gothic", Font.PLAIN, 20));
 
         return boton;
     }
@@ -211,8 +231,8 @@ public class RegistroInicioSesion extends JPanel {
         campo.setPreferredSize(new Dimension(320, 36));
         campo.setMaximumSize(new Dimension(320, 36));
         campo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        campo.setForeground(COLOR_TEXTO);
-        campo.setBackground(COLOR_FONDO);
+        //campo.setForeground(COLOR_TEXTO);
+        //campo.setBackground(COLOR_FONDO);
         return campo;
     }
 
@@ -221,8 +241,8 @@ public class RegistroInicioSesion extends JPanel {
         campo.setPreferredSize(new Dimension(320, 36));
         campo.setMaximumSize(new Dimension(320, 36));
         campo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        campo.setForeground(COLOR_TEXTO);
-        campo.setBackground(COLOR_FONDO);
+        //campo.setForeground(COLOR_TEXTO);
+        //campo.setBackground(COLOR_FONDO);
         return campo;
     }
 
@@ -232,7 +252,7 @@ public class RegistroInicioSesion extends JPanel {
         panel.setOpaque(false);
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         JLabel label = new JLabel(tituloLabel);
-        label.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        //label.setFont(new Font("Segoe UI", Font.BOLD, 12));
         label.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         campo.setAlignmentX(Component.LEFT_ALIGNMENT);
