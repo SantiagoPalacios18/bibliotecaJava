@@ -69,6 +69,8 @@ public class RegistroMaterial extends JPanel {
         btnEscape.addActionListener(e -> {
             vista.setMenu(vista.getMenu());
         });
+
+        agregarMaterial(3);
     }
 
     public void agregarMaterial(int fila) {
@@ -83,7 +85,7 @@ public class RegistroMaterial extends JPanel {
             c.anchor = GridBagConstraints.CENTER;
             c.gridx = i[0] % fila;
             c.gridy = i[0] / fila;
-            opt.add(new Material_visual(m, w), c);
+            opt.add(new Material_visual(m, w, vista), c);
             i[0]++;
         });
         opt.revalidate();

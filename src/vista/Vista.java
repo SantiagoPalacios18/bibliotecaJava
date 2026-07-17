@@ -13,6 +13,8 @@ import vista.panels.*;
 public class Vista extends JFrame { //Extiende de JFrame porque es la ventana principal
     private Controlador controlador;
     private MainMenu menu;
+    private RegistroInicioSesion ris;
+    private ArrayList<MaterialBiblioteca> seleccionados = new  ArrayList<MaterialBiblioteca>(); // Elementos seleccionados en RegistroMaterial
 
     public Vista(int x, int y) {
         Toolkit tk = Toolkit.getDefaultToolkit();
@@ -24,32 +26,10 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         setLocationRelativeTo(null); //Centra en la pantalla
         setPreferredSize(new Dimension(x, y)); //
         //setExtendedState(JFrame.MAXIMIZED_BOTH);
-//
-//        ArrayList<MaterialBiblioteca> listaLibros = new ArrayList<MaterialBiblioteca>();
-//
-//        Libro libro1 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
-//                "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
-//        libro1.setDisponibilidad(false);
-//        listaLibros.add(libro1);
-//
-//        Libro libro2 = new Libro("Recetas con pan", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
-//                "./assets/eadlt-vol1.jpg", "h4terCel1ac0s1221", "Cocina");
-//        listaLibros.add(libro2);
-//
-//        Libro libro3 = new Libro("ComoCocinarCentollas", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "ha73rS4p4110s", "Navegadores");
-//        listaLibros.add(libro3);
-//
-//        Libro libro4 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
-//        listaLibros.add(libro4);
-//
-//        Libro libro5 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
-//        listaLibros.add(libro5);
-//
-//        Libro libro6 = new Libro("Vivaldi", "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.", "./assets/eadlt-vol1.jpg", "Antonio Vivaldi", "Navegadores");
-//        listaLibros.add(libro6);
 
         Font fontBtn = new Font("Century Gothic", Font.BOLD, 20);
         UIManager.put("Label.foreground", Color.white);
+        UIManager.put("Label.font", fontBtn);
         UIManager.put("Button.background", Color.red);
         UIManager.put("Button.foreground", Color.white);
         UIManager.put("Button.font", fontBtn);
@@ -70,9 +50,9 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
                 int w = actPanel.getWidth();
                 int fila;
                 if(actPanel instanceof RegistroMaterial) {
-                    if (w >= (int) (scn.getWidth() * .65)) {
+                    if (w >= (int) (scn.getWidth() * .68)) {
                         fila = 6;
-                    } else if (w <= (int) (scn.getWidth() * .65) && w >= (int) (scn.getWidth() * .25)) {
+                    } else if (w <= (int) (scn.getWidth() * .68) && w >= (int) (scn.getWidth() * .25)) {
                         fila = 3;
                     } else {
                         fila = 1;
@@ -101,6 +81,19 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         setPanel(newMenu);
     }
 
+    public void finalizar(){
+        controlador.setUsuarioLogueado(null);
+        setPanel(ris);
+    }
+
+    public boolean registrarUsusario(String nombre, String apellido, String mail, String contrasena){
+        return controlador.registrarUsuario(nombre, apellido, mail, contrasena);
+    }
+
+    public boolean iniciarSesion(String mail, String contrasena){
+        return controlador.iniciarSesion(mail, contrasena);
+    }
+
     public void setControlador(Controlador controlador) {
         this.controlador = controlador;
     }
@@ -118,10 +111,20 @@ public class Vista extends JFrame { //Extiende de JFrame porque es la ventana pr
         setPanel(menu);
     }
 
-    public void finalizar(){
-        controlador.setUsuarioLogueado(null);
-        RegistroInicioSesion ris = new RegistroInicioSesion();
-        setPanel(ris);
+    public RegistroInicioSesion getRis() {
+        return ris;
+    }
+
+    public void setRis(RegistroInicioSesion ris) {
+        this.ris = ris;
+    }
+
+    public ArrayList<MaterialBiblioteca> getSeleccionados() {
+        return seleccionados;
+    }
+
+    public void setSeleccionados(ArrayList<MaterialBiblioteca> seleccionados) {
+        this.seleccionados = seleccionados;
     }
 
     /*AQUÍ VA TU CONTENIDO, SOY CLARAMENTE UNA IA MUSTAFA LA CONCHA DE LA PROGENITORA DE TU PROGENITORA

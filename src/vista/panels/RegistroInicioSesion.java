@@ -1,5 +1,7 @@
 package vista.panels;
 
+import vista.Vista;
+
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.*;
@@ -8,14 +10,16 @@ import javax.swing.border.EmptyBorder;
 public class RegistroInicioSesion extends JPanel {
     private JPanel contenedorCentral;
     private CardLayout cardLayout;
+    private Vista vista;
 
     //private final Color COLOR_FONDO = Color.decode("#676e80ff");
     //private final Color COLOR_TEXTO = Color.decode("#f8fafc");
     //private final Color COLOR_PRIMARIO = Color.decode("#6366f1");
-    
-    
+
+
     // JPanel Principal: Botones de registro e iniciar sesion
-    public RegistroInicioSesion() {
+    public RegistroInicioSesion(Vista vista) {
+        this.vista = vista;
         cardLayout = new CardLayout();
         contenedorCentral = new JPanel(cardLayout);
 
@@ -39,7 +43,6 @@ public class RegistroInicioSesion extends JPanel {
 
         // Titulo
         JLabel lblTitulo = new JLabel("Sistema Biblioteca");
-        lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 36));
         //lblTitulo.setForeground(COLOR_TEXTO);
 
         c.weightx = 1;
@@ -69,12 +72,12 @@ public class RegistroInicioSesion extends JPanel {
         JTextField txtNombre = crearCampoTexto();
         JTextField txtApellido = crearCampoTexto();
         JTextField txtEmail = crearCampoTexto();
-        
-        
+
+
         // Acción para cambiar de panel
         btnRegistrarse.addActionListener(e -> cardLayout.show(contenedorCentral, "REGISTRO"));
         btnIniciarSesion.addActionListener(e -> cardLayout.show(contenedorCentral, "SESION"));
-        
+
         btnRegistrarse.setFocusPainted(false);
         btnRegistrarse.setBorderPainted(false);
 
@@ -90,6 +93,7 @@ public class RegistroInicioSesion extends JPanel {
         JPanel registro = new JPanel(new GridBagLayout());
         registro.add(new JLabel(""));
         GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(10, 20, 10, 20);
 
         c.weightx = 1;
         c.weighty = 0;
@@ -106,44 +110,79 @@ public class RegistroInicioSesion extends JPanel {
         registro.add(btnVolver, c);
 
         JPanel formulario =  new JPanel(new GridBagLayout());
-        c.insets = new Insets(10, 20, 10, 20);
+        c.insets = new Insets(2, 20, 0, 20);
 
 //----------Contenido Formulario-------------------------------------------------------
-            JLabel titulo  = new JLabel("Ingresa los datos");
+
+            JLabel lblNombre = new JLabel("Nombre:");
+            c.fill  = GridBagConstraints.NONE;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 0;
+            formulario.add(lblNombre, c);
 
             JTextField txtNombre = crearCampoTexto();
             c.fill  = GridBagConstraints.BOTH;
             c.anchor = GridBagConstraints.CENTER;
             c.gridx = 0;
-            c.gridy = 0;
+            c.gridy = 1;
             formulario.add(txtNombre, c);
+
+            JLabel lblApellido = new JLabel("Apellido:");
+            c.fill  = GridBagConstraints.NONE;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 2;
+            formulario.add(lblApellido, c);
 
             JTextField txtApellido = crearCampoTexto();
             c.fill  = GridBagConstraints.BOTH;
             c.anchor = GridBagConstraints.CENTER;
             c.gridx = 0;
-            c.gridy = 1;
+            c.gridy = 3;
             formulario.add(txtApellido, c);
+
+            JLabel lblEmail = new JLabel("Email:");
+            c.fill  = GridBagConstraints.NONE;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 4;
+            formulario.add(lblEmail, c);
+
 
             JTextField txtEmail = crearCampoTexto();
             c.fill  = GridBagConstraints.BOTH;
             c.anchor = GridBagConstraints.CENTER;
             c.gridx = 0;
-            c.gridy = 2;
+            c.gridy = 5;
             formulario.add(txtEmail, c);
+
+            JLabel lblPassword = new JLabel("Contraseña:");
+            c.fill  = GridBagConstraints.NONE;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 6;
+            formulario.add(lblPassword, c);
 
             JPasswordField txtPassword = crearCampoPassword();
             c.fill  = GridBagConstraints.BOTH;
             c.anchor = GridBagConstraints.CENTER;
             c.gridx = 0;
-            c.gridy = 3;
+            c.gridy = 7;
             formulario.add(txtPassword, c);
+
+            JLabel lblConfirmPassword = new JLabel("Confirmar contraseña:");
+            c.fill  = GridBagConstraints.NONE;
+            c.anchor = GridBagConstraints.WEST;
+            c.gridx = 0;
+            c.gridy = 8;
+            formulario.add(lblConfirmPassword, c);
 
             JPasswordField txtConfirmPassword = crearCampoPassword();
             c.fill  = GridBagConstraints.BOTH;
             c.anchor = GridBagConstraints.CENTER;
             c.gridx = 0;
-            c.gridy = 4;
+            c.gridy = 9;
 
             formulario.add(txtConfirmPassword, c);
 
@@ -161,36 +200,100 @@ public class RegistroInicioSesion extends JPanel {
         registro.add(formulario, c);
         formulario.setBackground(Color.red);
 
+        JButton btnRegistrar = new JButton("Registrar");
+        c.weighty = 0;
+        c.fill  = GridBagConstraints.NONE;
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 2;
+        registro.add(btnRegistrar, c);
+
+        btnRegistrar.addActionListener(e -> {
+            if(txtPassword.getText().equals(txtConfirmPassword.getText())) {
+                lblConfirmPassword.setText("Confirmar Contraseña: ");
+                lblConfirmPassword.setForeground(Color.white);
+                if(vista.registrarUsusario(txtNombre.getText(), txtApellido.getText(), txtEmail.getText(), txtPassword.getText())){
+                    cardLayout.show(contenedorCentral, "MENU");
+                    vista.setPanel(vista.getMenu());
+                    lblEmail.setText("Email:");
+                    lblNombre.setForeground(Color.white);
+                }else{
+                    lblEmail.setText("ERROR - Email ya registrado");
+                    lblEmail.setForeground(Color.yellow);
+                }
+            }else{
+                lblConfirmPassword.setText("ERROR - La cont no coincide");
+                lblConfirmPassword.setForeground(Color.yellow);
+            }
+
+        });
+
         return registro;
     }
 
     // -------------------- PANEL 3: INICIO DE SESIÓN --------------------
     private JPanel crearPanelSesion() {
-        JPanel sesion = new JPanel();
-        sesion.add(new JLabel("Aquí irán tus campos de texto de registro"));
+
+        JPanel sesion = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new  GridBagConstraints();
+        c.insets = new Insets(10, 20, 10, 20);
 
         JButton btnVolver = new JButton("Volver al Menú");
+        c.weightx = 1;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
+        c.ipadx = 60;
+        c.ipady = 30;
+        c.gridx = 0;
+        c.gridy = 0;
         btnVolver.addActionListener(e -> cardLayout.show(contenedorCentral, "MENU"));
-        sesion.add(btnVolver);
-        GridBagConstraints c = new  GridBagConstraints();
+        sesion.add(btnVolver, c);
+
+        JLabel titulo = new JLabel("Ingresar Email y Contraseña");
+        c.weightx = 1;
+        c.fill  = GridBagConstraints.NONE;
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 1;
+        c.gridwidth = 2;
+        sesion.add(titulo, c);
 
         JTextField txtEmail = crearCampoTexto();
         c.ipadx = 300;
         c.ipady = 30;
         c.anchor = GridBagConstraints.CENTER;
         c.gridx = 0;
-        c.gridy = 0;
+        c.gridy = 2;
+        c.gridwidth = 1;
         sesion.add(txtEmail, c);
 
         JPasswordField txtPassword = crearCampoPassword();
         c.ipadx = 300;
         c.ipady = 30;
         c.anchor = GridBagConstraints.CENTER;
-        c.gridx = 0;
-        c.gridy = 1;
+        c.gridx = 1;
+        c.gridy = 2;
         sesion.add(txtPassword, c);
 
-        
+        JButton btnIngresar = new JButton("Ingresar");
+        c.weightx = 1;
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 0;
+        c.gridy = 3;
+        c.gridwidth = 2;
+        sesion.add(btnIngresar, c);
+
+        btnIngresar.addActionListener(e -> {
+            String email = txtEmail.getText();
+            String contrasena = txtPassword.getText();
+            if(vista.iniciarSesion(email, contrasena)){
+                cardLayout.show(contenedorCentral, "MENU");
+                vista.setPanel(vista.getMenu());
+            }else{
+                titulo.setText("Error - Mail o Contraseña incorrectos");
+                titulo.setForeground(Color.RED);
+            }
+        });
+
         return sesion;
     }
 
@@ -220,7 +323,7 @@ public class RegistroInicioSesion extends JPanel {
         boton.setContentAreaFilled(false);
         boton.setOpaque(false);
         boton.setBorder(new EmptyBorder(10, 20, 10, 20));
-        boton.setFont(new Font("Century Gothic", Font.PLAIN, 20));
+        //boton.setFont(new Font("Century Gothic", Font.PLAIN, 20));
 
         return boton;
     }
@@ -273,7 +376,7 @@ public class RegistroInicioSesion extends JPanel {
  * estándar
  * boton.setOpaque(false); // Hacer el botón transparente para que se vea el
  * fondo redondeado
- * 
+ *
  * // Margen interno para el texto
  * boton.setBorder(new EmptyBorder(10, 20, 10, 20));
  * boton.setFont(new Font("Arial", Font.BOLD, 30));

@@ -1,6 +1,7 @@
 package vista.panels;
 
 import modelo.MaterialBiblioteca;
+import vista.Vista;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,17 +10,19 @@ import java.awt.event.MouseEvent;
 
 public class Material_visual extends JPanel {
     private final MaterialBiblioteca m;
-    private Image portada;
     private int w;
+    private Vista v;
+    private Image portada;
 
     private boolean selected;
 
     private boolean primera = true;
     private int cantClic = 0;
 
-    public Material_visual(MaterialBiblioteca m, int w) {
+    public Material_visual(MaterialBiblioteca m, int w, Vista v) {
         this.m = m;
         this.w = w;
+        this.v = v;
         portada = m.getImg();
 
         setLayout(new BorderLayout());
@@ -50,9 +53,13 @@ public class Material_visual extends JPanel {
                             if (!selected) {
                                 setBackground(Color.red);
                                 selected = true;
+                                v.getSeleccionados().add(m);
+                                System.out.println(v.getSeleccionados());
                             } else {
                                 setBackground(Color.white);
                                 selected = false;
+                                v.getSeleccionados().remove(m);
+                                System.out.println(v.getSeleccionados());
                             }
                         } else {
                             new Material_visualEXTEND(m);

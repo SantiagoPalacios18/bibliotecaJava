@@ -23,13 +23,14 @@ public class Controlador {
         return biblioteca.registrarUsuario(new Usuario(nombre, apellido, mail, contrasena));
     }
 
-    public Usuario iniciarSesion(String mail, String contrasena) {
+    public boolean iniciarSesion(String mail, String contrasena) {
         Usuario user = biblioteca.validarDatos(mail, contrasena);
         if (user != null) {
             biblioteca.setUsuarioLogueado(user);
+            return true;
         }
 
-        return user;
+        return false;
     }
 
     public void setUsuarioLogueado(Usuario user){
